@@ -21,4 +21,4 @@ def ifaces(interface=all):
 
 @net.route('/net/connections', methods=['GET'])
 def connections():
-    return jsonify(connections=str(psutil.net_connections()))
+    return jsonify(connections=[str(x) for x in psutil.net_connections()])
