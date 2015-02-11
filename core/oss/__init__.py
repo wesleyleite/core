@@ -1,11 +1,13 @@
 # *-* coding: utf-8 *-*
 from flask import Blueprint, jsonify
 import platform
+from ..auths import *
 
 os = Blueprint('os', __name__, 
                     template_folder='')
 
 @os.route('/os/info', methods=['GET'])
+@auth.login_required
 def os_info():
     uname=platform.uname()
     system=platform.system()
@@ -23,6 +25,7 @@ def os_info():
             processor=processor)
 
 @os.route('/os/dist', methods=['GET'])
+@auth.login_required
 def os_dist():
     os_dist=''
     system=platform.system()

@@ -1,11 +1,13 @@
 # *-* coding: utf-8 *-*
 from flask import Blueprint, jsonify
 from psutil import Process, get_pid_list
+from ..auths import *
 
 process = Blueprint('process', __name__, 
                     template_folder='')
 
 @process.route('/process', methods=['GET'])
+@auth.login_required
 def processs():
     lprocess = get_pid_list()
     lAllprocess=[]
@@ -36,6 +38,7 @@ def processs():
 
 
 @process.route('/process/children/<int:pid>', methods=['GET'])
+@auth.login_required
 def get_children(pid):
     lchildren=[]
     if pid != 0:
