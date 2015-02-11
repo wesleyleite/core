@@ -9,6 +9,8 @@ We live in a world where the devices are not known, but, they can talk to each o
 that's great. I belive that in a perfect environment the resource should be monitored and the burden should be distributed meeting the needs 
 of the host without disturbing your performance.
 
+More information operation can be seen on the [WIKI](https://github.com/wesleyleite/core/wiki)
+
 ## Basic Modules
   * CPUS
   
