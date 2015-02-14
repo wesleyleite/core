@@ -21,10 +21,11 @@ def disk_part():
 
     return jsonify(disk=ldisk)
 
-@disk.route('/disk/usage/<int:id>', methods=['GET'])
+@disk.route('/disk/usage/<id>', methods=['GET'])
 @auth.login_required
 def disk_use(id):
     ldisk = []
+    id = int(id)
     try:
         diskpath = disk_partitions(all=False)[id]
         dd = disk_usage(diskpath[1])

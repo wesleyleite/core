@@ -37,11 +37,12 @@ def processs():
     return jsonify(process=lAllprocess)
 
 
-@process.route('/process/children/<int:pid>', methods=['GET'])
+@process.route('/process/children/<pid>', methods=['GET'])
 @auth.login_required
 def get_children(pid):
     lchildren=[]
-    if pid != 0:
+    pid = int(pid)
+    if pid > 0:
         pchild=Process(pid)
         for child in pchild.children(recursive=True):
             lchildren.append({'name': child.name(), 

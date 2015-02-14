@@ -14,10 +14,11 @@ def cpu_num():
     return jsonify(CPU=cpu_count(), 
             NO_LOGICAL=cpu_count(logical=False))
 
-@cpu.route('/cpu/usage/<int:trange>', methods=['GET'])
+@cpu.route('/cpu/usage/<trange>', methods=['GET'])
 @cpu.route('/cpu/usage', methods=['GET'])
 @auth.login_required
 def cpu_percent_usage(trange=3):
+    trange = int(trange)
     return jsonify(CPU_USAGE=usage_percent(trange))
 
 @cpu.route('/cpu/info', methods=['GET'])
