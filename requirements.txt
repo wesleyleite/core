@@ -3,3 +3,4 @@ Flask-Script==2.0.5
 Flask-HTTPAuth==2.3.0
 psutil==2.2.1
 py-cpuinfo==0.1.4
+uptime==3.0.1
