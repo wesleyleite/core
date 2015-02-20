@@ -1,12 +1,12 @@
 #!/bin/bash
 
-module_dir="$1"
+module_dir="$(echo $1 | sed 's/\///g')"
 [ -e "$module_dir" ] && {
 	blueprint_name="$(cat $module_dir/__init__.py |
 		grep 'Blueprint(' |
 		cut -d \= -f1)"
 
-
+	
 	[ ! -z "$blueprint_name" ] && {
 		[ -z "$(grep $blueprint_name blue_register.py)" -a \
 			-z "$(grep $module_dir imports.py)" ] && {
