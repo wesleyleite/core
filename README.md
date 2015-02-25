@@ -5,9 +5,7 @@ very simple to create new module, independent and simple loading.
 
 ## Motivation
 
-We live in a world where the devices are not known, but, they can talk to each other through the wonderful abstraction layer between them, 
-that's great. I belive that in a perfect environment the resource should be monitored and the burden should be distributed meeting the needs 
-of the host without disturbing your performance.
+Create something that is simple in all aspects.
 
 More information operation can be seen on the [WIKI](https://github.com/wesleyleite/core/wiki)
 
