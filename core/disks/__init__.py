@@ -1,3 +1,5 @@
+""" Disk storage information
+"""
 # *-* coding: utf-8 *-*
 from flask import Blueprint, jsonify
 from psutil import disk_partitions, disk_usage
@@ -9,6 +11,8 @@ disk = Blueprint('disk', __name__,
 @disk.route('/disk', methods=['GET'])
 @auth.login_required
 def disk_part():
+    """ Show all disk partitions.
+    """
     ldisk = []
     fdisk = disk_partitions(all=False)
     for n,dd in enumerate(fdisk):
@@ -25,13 +29,23 @@ def disk_part():
 @disk.route('/disk/usage/<id>/<unit>', methods=['GET'])
 @auth.login_required
 def disk_use(id, unit=None):
+    """ show allocated space information from disk.id
+        in Byte(default) MiB or GiB
+
+        /disk/usage/0 
+            show allocated space information from disk 0 in Byte
+        /disk/usage/0/GiB
+            show allocated space information from disk 0 in GiB
+    """
     if unit is None:
         convert=1
-    elif unit == 'Mb':
+    elif unit == 'MiB':
         convert=1048576
-    elif unit == 'Gb':
+    elif unit == 'GiB':
         convert=1073741824
-
+    else:
+        convet=1
+        
     ldisk = []
     id = int(id)
     try:
