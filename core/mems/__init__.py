@@ -1,3 +1,5 @@
+""" Show memory info
+"""
 # *-* coding: utf-8 *-*
 from flask import Blueprint, jsonify
 from psutil import virtual_memory, swap_memory
