@@ -1,3 +1,6 @@
+""" network informations interfaces, connections.
+    it should be improved!
+"""
 # *-* coding: utf-8 *-*
 from flask import Blueprint, jsonify
 import psutil
@@ -10,6 +13,11 @@ net = Blueprint('net', __name__,
 @net.route('/net/iface/<interface>', methods=['GET'])
 @auth.login_required
 def ifaces(interface=all):
+    """ show all network interfaces.
+            /net/iface
+        show the interface of statistic eth0
+            /net/iface/eth0
+    """
     lIface=[]
     dIface=psutil.net_io_counters(pernic=True)
     for v,k in enumerate(dIface):
@@ -24,4 +32,8 @@ def ifaces(interface=all):
 @net.route('/net/connections', methods=['GET'])
 @auth.login_required
 def connections():
-    return jsonify(connections=[str(x) for x in psutil.net_connections()])
+    """ Show all connections on the time
+    """
+    return jsonify(
+        connections=[str(x) for x in psutil.net_connections()]
+    )
